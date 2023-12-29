@@ -18,7 +18,6 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
     <description>Recent content {{ if not .IsHome }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
-    <generator>Hugo -- gohugo.io</generator>
     <language>{{ site.Language.LanguageCode }}</language>{{ with .Site.Author.email }}
     <managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>{{end}}{{ with .Site.Author.email }}
     <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
