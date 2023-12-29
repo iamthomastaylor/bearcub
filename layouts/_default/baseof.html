@@ -6,10 +6,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {{- partial "favicon.html" . -}}
+  {{ if .IsHome }}
+  <title>{{ .Site.Title }}</title>
+  {{ else }}
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
+  {{ end }}
 
   {{- partial "seo_tags.html" . -}}
   <meta name="referrer" content="no-referrer-when-downgrade" />
+  <script 
+    data-goatcounter="{{ .Site.Params.goatcounter }}"
+    async src="https://gc.zgo.at/count.js">
+  </script>
 
   {{ $style := resources.Get "style.css" | minify }}
   <link href="{{ $style.RelPermalink }}" rel="stylesheet">
@@ -40,6 +48,7 @@
   </header>
   <main id="main-content">
     {{- block "main" . }}{{- end }}
+    {{- partial "custom_main.html" . -}}
   </main>
   <footer>
     {{- partial "footer.html" . -}}
