@@ -1,15 +1,7 @@
-{{ define "main" }}
-<content>
-  {{ if .Data.Singular }}
-    <h1 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h1>
-  {{ else }}
-    <h1 class="blog-filter">{{ .Title }}</h1>
-    {{ $t := .Site.GetPage "tags"}}
-    {{ $c := .Site.GetPage "categories"}}
-    <p>{{ .Pages.Len }} posts sortable by <a href="{{ $c.Permalink }}">categories</a> or <a href="{{ $t.Permalink }}">tags</a>.</p>
-  {{ end }}
+{{ if .IsHome }}
+  {{ $pages := first .Site.Params.latestPostsCount (where .Site.RegularPages "Section" "blog") }}
   <ul class="blog-posts">
-    {{ range .Pages }}
+    {{ range $pages }}
     <li>
       <span>
         <i>
@@ -30,5 +22,4 @@
     </li>
     {{ end }}
   </ul>
-</content>
 {{ end }}
