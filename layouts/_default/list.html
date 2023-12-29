@@ -1,7 +1,12 @@
 {{ define "main" }}
 <content>
   {{ if .Data.Singular }}
-    <h3 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h3>
+    <h1 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h1>
+  {{ else }}
+    <h1 class="blog-filter">{{ .Title }}</h1>
+    {{ $t := .Site.GetPage "tags"}}
+    {{ $c := .Site.GetPage "categories"}}
+    <p>{{ .Pages.Len }} posts sortable by <a href="{{ $c.Permalink }}">categories</a> or <a href="{{ $t.Permalink }}">tags</a>.</p>
   {{ end }}
   <ul class="blog-posts">
     {{ range .Pages }}
@@ -25,12 +30,5 @@
     </li>
     {{ end }}
   </ul>
-  {{ if not .Data.Singular }}
-    <div>
-      {{ range .Site.Taxonomies.tags }}
-        <a class="blog-tags" href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;&nbsp;
-      {{ end }}
-    </div>
-  {{ end }}
 </content>
 {{ end }}
