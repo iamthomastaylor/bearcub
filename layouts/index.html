@@ -32,7 +32,7 @@
 {{ $links := .Site.Params.links }}
 {{ $len := (len $links) }}
 {{ range $index, $link := $links }}
-→ <a href="https://weeklywtf.beehiiv.com/subscribe"><strong>{{ $link.name }}</strong></a>.
+→ <a href="{{ $link.url }}"><strong>{{ $link.name }}</strong></a>.
 {{ if $link.description }}
 {{ $link.description }}
 {{ end }}
