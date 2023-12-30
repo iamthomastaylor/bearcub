@@ -15,3 +15,9 @@
 
 [latest-posts]
   other = "Latest Posts"
+
+[view-all]
+  other = "View all"
+
+[stay-in-touch]
+  other = "Stay in touch"
