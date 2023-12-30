@@ -6,7 +6,7 @@
     <h1 class="blog-filter">{{ .Title }}</h1>
     {{ $t := .Site.GetPage "tags"}}
     {{ $c := .Site.GetPage "categories"}}
-    <p>{{ .Pages.Len }} posts sortable by <a href="{{ $c.Permalink }}">categories</a> or <a href="{{ $t.Permalink }}">tags</a>.</p>
+    <p>{{ .Pages.Len }} posts filterable by <a href="{{ $c.Permalink }}">categories</a> or <a href="{{ $t.Permalink }}">tags</a>.</p>
   {{ end }}
   <ul class="blog-posts">
     {{ range .Pages }}

@@ -1,4 +1,5 @@
 {{ define "main" }}
+<p>{{ .Site.Params.description }}</p>
 <h2>{{ i18n "latest-posts" }}</h2>
 {{ $pages := first .Site.Params.latestPostsCount (where .Site.RegularPages "Section" "blog") }}
 <ul class="blog-posts">
@@ -23,5 +24,22 @@
 </li>
 {{ end }}
 </ul>
-{{ .Content }}
+{{ $b := .Site.GetPage "blog" }}
+<p><a href="{{ $b.Permalink }}">{{ i18n "view-all" }} →</a></p>
+{{ if .Site.Params.links}}
+<h2>{{ i18n "stay-in-touch" }}</h2>
+<p>
+{{ $links := .Site.Params.links }}
+{{ $len := (len $links) }}
+{{ range $index, $link := $links }}
+→ <a href="https://weeklywtf.beehiiv.com/subscribe"><strong>{{ $link.name }}</strong></a>.
+{{ if $link.description }}
+{{ $link.description }}
+{{ end }}
+{{ if not (eq (add $index 1) $len) }}
+<br>
+{{ end }}
+{{ end }}
+</p>
+{{ end }}
 {{ end }}
