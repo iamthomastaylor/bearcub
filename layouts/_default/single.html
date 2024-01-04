@@ -8,6 +8,7 @@
   {{ with .Params.author }}· {{.}}{{ end }}
 </p>
 {{ end }}
+{{- partial "newsletter.html" . -}}
 <content>
   {{ .Content }}
 </content>
@@ -23,9 +24,4 @@
     </a>
   </p>
 {{ end }}
-<p>
-  <a href="https://weeklywtf.beehiiv.com/subscribe">
-    Subscribe to weekly tech news →
-  </a>
-</p>
 {{ end }}
