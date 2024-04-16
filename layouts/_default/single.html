@@ -8,6 +8,21 @@
   {{ with .Params.author }}· {{.}}{{ end }}
 </p>
 {{ end }}
+{{ if .Site.Params.ethicalAdsPublisher }}
+<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<style>
+  div.ea-content {
+    background-color: #282a37 !important;
+  }
+  strong.ea-headline, strong.ea-cta {
+    color: #8bbfdb !important;
+  }
+  span.ea-body, .ea-callout a {
+    color: #c7cfd9 !important;
+  }
+</style>
+<div class="bordered horizontal" data-ea-publisher='{{ .Site.Params.ethicalAdsPublisher }}' data-ea-type="text"></div>
+{{ end }}
 <content>
   {{ .Content }}
 </content>
